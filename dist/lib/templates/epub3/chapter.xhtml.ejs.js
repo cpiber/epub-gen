@@ -1,0 +1,3 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.default = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE html>\n<html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:epub=\"http://www.idpf.org/2007/ops\" xml:lang=\"<%= lang %>\" lang=\"<%= lang %>\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <title><%= title %></title>\n  <link rel=\"stylesheet\" type=\"text/css\" href=\"style.css\" />\n</head>\n<body>\n  <% if (prependChapterTitles) { %>\n    <h1><%= title %></h1>\n    <% if (author.length) { %>\n      <p class=\"epub-author\"><%= author.join(', ') %></p>\n    <% } %>\n    <% if (url) { %>\n      <p class=\"epub-link\"><a href=\"<%= url %>\"><%= url %></a></p>\n    <% } %>\n  <% } %>\n  <%- content %>\n</body>\n</html>";

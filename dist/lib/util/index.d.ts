@@ -1,0 +1,63 @@
+import type { EPub } from '..';
+import { Chapter, chapterPredicate, Content, Font, NormChapter, NormOptions, Options, optionsPredicate } from './validate';
+export * from './html';
+export * from './other';
+export { Options, NormOptions, Content, Chapter, NormChapter, Font, optionsPredicate, chapterPredicate };
+export declare const optionsDefaults: (version?: number) => Omit<Options, 'title'>;
+export declare const chapterDefaults: (index: number) => {
+    title: string;
+    id: string;
+    url: string;
+    excludeFromToc: boolean;
+    beforeToc: boolean;
+};
+export declare const normName: (name: string | string[] | undefined) => string[];
+export declare const validateAndNormalizeOptions: (options: Options) => Required<{
+    title: string;
+    publisher?: string | undefined;
+    description?: string | undefined;
+    cover?: string | undefined;
+    tocTitle?: string | undefined;
+    tocInTOC?: boolean | undefined;
+    numberChaptersInTOC?: boolean | undefined;
+    prependChapterTitles?: boolean | undefined;
+    date?: string | undefined;
+    lang?: string | undefined;
+    css?: string | undefined;
+    chapterXHTML?: string | undefined;
+    contentOPF?: string | undefined;
+    tocNCX?: string | undefined;
+    tocXHTML?: string | undefined;
+    version?: number | undefined;
+    fetchTimeout?: number | undefined;
+    retryTimes?: number | undefined;
+    batchSize?: number | undefined;
+    ignoreFailedDownloads?: boolean | undefined;
+    verbose?: boolean | import("./validate").LogFn | undefined;
+    author: string[];
+    fonts: Required<{
+        mediaType: string;
+        filename: string;
+        url: string;
+    }>[];
+}>;
+export declare function validateAndNormalizeChapters(this: EPub, chapters: readonly Chapter[]): Required<{
+    title?: string | undefined;
+    content: string;
+    excludeFromToc?: boolean | undefined;
+    beforeToc?: boolean | undefined;
+    filename?: string | undefined;
+    url?: string | undefined;
+    id: string;
+    author: string[];
+}>[];
+export declare const validateAndNormalizeChapter: (chapter: Chapter, index: number) => Required<{
+    title?: string | undefined;
+    content: string;
+    excludeFromToc?: boolean | undefined;
+    beforeToc?: boolean | undefined;
+    filename?: string | undefined;
+    url?: string | undefined;
+    id: string;
+    author: string[];
+}>;
