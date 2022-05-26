@@ -21,12 +21,12 @@ function fixHTML(index, html, imgCB) {
         for (var _i = 0, _a = Object.keys(element.attribs); _i < _a.length; _i++) {
             var name_1 = _a[_i];
             if (constants_1.allowedAttributes.indexOf(name_1) === -1) {
-                _this.warn("Warning (content[".concat(index, "]): attribute ").concat(name_1, " isn't allowed."));
+                _this.warn("Warning (content[" + index + "]): attribute " + name_1 + " isn't allowed.");
                 delete element.attribs[name_1];
             }
         }
         if (_this.options.version === 2 && constants_1.allowedXhtml11Tags.indexOf(element.tagName) === -1) {
-            _this.warn("Warning (content[".concat(index, "]): tag ").concat(element.tagName, " isn't allowed in EPUB 2/XHTML 1.1 DTD."));
+            _this.warn("Warning (content[" + index + "]): tag " + element.tagName + " isn't allowed in EPUB 2/XHTML 1.1 DTD.");
             element.tagName = 'div'; // yay for object-based trees
         }
     });

@@ -12,12 +12,12 @@ function fixHTML(index, html, imgCB) {
         for (var _i = 0, _a = Array.from(element.attributes); _i < _a.length; _i++) {
             var a = _a[_i];
             if (constants_1.allowedAttributes.indexOf(a.name) === -1) {
-                _this.warn("Warning (content[".concat(index, "]): attribute ").concat(a.name, " isn't allowed."));
+                _this.warn("Warning (content[" + index + "]): attribute " + a.name + " isn't allowed.");
                 element.removeAttribute(a.name);
             }
         }
         if (_this.options.version === 2 && allowedXhtml11Tags.indexOf(element.tagName) === -1) {
-            _this.warn("Warning (content[".concat(index, "]): tag ").concat(element.tagName, " isn't allowed in EPUB 2/XHTML 1.1 DTD."));
+            _this.warn("Warning (content[" + index + "]): tag " + element.tagName + " isn't allowed in EPUB 2/XHTML 1.1 DTD.");
             var div = document.createElement('div');
             for (var _b = 0, _c = Array.from(element.attributes); _b < _c.length; _b++) {
                 var a = _c[_b];

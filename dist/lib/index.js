@@ -180,9 +180,9 @@ var EPub = /** @class */ (function () {
                         if (!(i < this.options.fonts.length)) return [3 /*break*/, 4];
                         return [4 /*yield*/, Promise.all(this.options.fonts.slice(i, i + this.options.batchSize).map(function (font) {
                                 var d = (0, util_1.retryFetch)(font.url, _this.options.fetchTimeout, _this.options.retryTimes, _this.log)
-                                    .then(function (res) { return (_this.log("Downloaded font ".concat(font.url)), __assign(__assign({}, font), { data: res })); });
+                                    .then(function (res) { return (_this.log("Downloaded font " + font.url), __assign(__assign({}, font), { data: res })); });
                                 return _this.options.ignoreFailedDownloads
-                                    ? d.catch(function (reason) { return (_this.warn("Warning (font ".concat(font.url, "): Download failed"), reason), __assign(__assign({}, font), { data: '' })); })
+                                    ? d.catch(function (reason) { return (_this.warn("Warning (font " + font.url + "): Download failed", reason), __assign(__assign({}, font), { data: '' })); })
                                     : d;
                             }))];
                     case 2:
@@ -214,14 +214,14 @@ var EPub = /** @class */ (function () {
                         if (!(i < this.images.length)) return [3 /*break*/, 4];
                         return [4 /*yield*/, Promise.all(this.images.slice(i, i + this.options.batchSize).map(function (image) {
                                 var d = (0, util_1.retryFetch)(image.url, _this.options.fetchTimeout, _this.options.retryTimes, _this.log)
-                                    .then(function (res) { return (_this.log("Downloaded image ".concat(image.url)), __assign(__assign({}, image), { data: res })); });
+                                    .then(function (res) { return (_this.log("Downloaded image " + image.url), __assign(__assign({}, image), { data: res })); });
                                 return _this.options.ignoreFailedDownloads
-                                    ? d.catch(function (reason) { return (_this.warn("Warning (image ".concat(image.url, "): Download failed"), reason), __assign(__assign({}, image), { data: '' })); })
+                                    ? d.catch(function (reason) { return (_this.warn("Warning (image " + image.url + "): Download failed", reason), __assign(__assign({}, image), { data: '' })); })
                                     : d;
                             }))];
                     case 2:
                         imageContents = _a.sent();
-                        imageContents.forEach(function (image) { return images.file("".concat(image.id, ".").concat(image.extension), image.data); });
+                        imageContents.forEach(function (image) { return images.file(image.id + "." + image.extension, image.data); });
                         _a.label = 3;
                     case 3:
                         i += this.options.batchSize;
@@ -242,10 +242,10 @@ var EPub = /** @class */ (function () {
                             return [2 /*return*/, this.log('No cover to download')];
                         oebps = this.zip.folder('OEBPS');
                         return [4 /*yield*/, (0, util_1.retryFetch)(this.options.cover, this.options.fetchTimeout, this.options.retryTimes, this.log)
-                                .catch(function (reason) { return (_this.warn("Warning (cover ".concat(_this.options.cover, "): Download failed"), reason), ''); })];
+                                .catch(function (reason) { return (_this.warn("Warning (cover " + _this.options.cover + "): Download failed", reason), ''); })];
                     case 1:
                         coverContent = _a.sent();
-                        oebps.file("cover.".concat(this.cover.extension), coverContent);
+                        oebps.file("cover." + this.cover.extension, coverContent);
                         return [2 /*return*/];
                 }
             });

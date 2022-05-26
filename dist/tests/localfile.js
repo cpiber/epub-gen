@@ -46,10 +46,10 @@ var lib_1 = __importDefault(require("../lib"));
     var content;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4 /*yield*/, (0, lib_1.default)({ title: 'EPub Gen' }, [{ content: "<p>Generate EPUB books from HTML with a simple API in Node.js or the browser.</p><p><img src=\"file://".concat((0, path_1.resolve)(__dirname, '../../demo_preview.png'), "\"><img>") }])];
+            case 0: return [4 /*yield*/, (0, lib_1.default)({ title: 'EPub Gen' }, [{ content: "<p>Generate EPUB books from HTML with a simple API in Node.js or the browser.</p><p><img src=\"file://" + (0, path_1.resolve)(__dirname, '../../demo_preview.png') + "\"><img>" }])];
             case 1:
                 content = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 2:
                 _a.sent();
                 return [2 /*return*/];

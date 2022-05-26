@@ -12,11 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -77,14 +73,14 @@ var promises_1 = require("fs/promises");
 var node_fetch_1 = __importDefault(require("node-fetch"));
 var lib_1 = __importStar(require("../lib"));
 var aliceData_1 = require("./aliceData");
-aliceData_1.optionsAlice.css = "".concat((0, lib_1.optionsDefaults)(2).css, "\n/* latin-ext */\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/lato-ext.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/lato.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n@font-face {\n  font-family: 'Advent Pro';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/advent.ttf) format('ttf');\n}\n\nbody {\n  font-family: Lato;\n}\n");
+aliceData_1.optionsAlice.css = (0, lib_1.optionsDefaults)(2).css + "\n/* latin-ext */\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/lato-ext.woff2) format('woff2');\n  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;\n}\n/* latin */\n@font-face {\n  font-family: 'Lato';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/lato.woff2) format('woff2');\n  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;\n}\n\n@font-face {\n  font-family: 'Advent Pro';\n  font-style: normal;\n  font-weight: 400;\n  src: url(./fonts/advent.ttf) format('ttf');\n}\n\nbody {\n  font-family: Lato;\n}\n";
 aliceData_1.optionsAlice.fonts = [
     { url: 'https://fonts.gstatic.com/s/lato/v20/S6uyw4BMUTPHjxAwXjeu.woff2', filename: 'lato-ext.woff2' },
     { url: 'https://fonts.gstatic.com/s/lato/v20/S6uyw4BMUTPHjx4wXg.woff2', filename: 'lato.woff2' },
     { url: 'http://fonts.gstatic.com/s/adventpro/v4/1NxMBeKVcNNH2H46AUR3wfesZW2xOQ-xsNqO47m55DA.ttf', filename: 'advent.ttf' },
 ];
 aliceData_1.optionsAlice.version = 2;
-aliceData_1.contentAlice.push(__assign(__assign({}, aliceData_1.contentAlice[1]), { content: "<main attr=\"bla\"><img somerandomattr>".concat(aliceData_1.contentAlice[1].content.replace('<img', '<IMG'), "</main><div>") }));
+aliceData_1.contentAlice.push(__assign(__assign({}, aliceData_1.contentAlice[1]), { content: "<main attr=\"bla\"><img somerandomattr>" + aliceData_1.contentAlice[1].content.replace('<img', '<IMG') + "</main><div>" }));
 (function () { return __awaiter(void 0, void 0, void 0, function () {
     var content, _a, _b, content2;
     var _c;
@@ -93,7 +89,7 @@ aliceData_1.contentAlice.push(__assign(__assign({}, aliceData_1.contentAlice[1])
             case 0: return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 1:
                 content = _d.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 2:
                 _d.sent();
                 _b = (_a = aliceData_1.contentAlice).push;
@@ -105,7 +101,7 @@ aliceData_1.contentAlice.push(__assign(__assign({}, aliceData_1.contentAlice[1])
                 return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 4:
                 content2 = _d.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), "_html.epub"), Buffer.from(content2))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + "_html.epub", Buffer.from(content2))];
             case 5:
                 _d.sent();
                 return [2 /*return*/];

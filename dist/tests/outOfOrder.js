@@ -60,7 +60,7 @@ aliceData_1.contentAlice[2].beforeToc = true;
             case 0: return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 1:
                 content = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 2:
                 _a.sent();
                 order = warnings.find(function (w) { return typeof w[0] === 'string' && w[0].match(/out of order/); });
@@ -71,7 +71,7 @@ aliceData_1.contentAlice[2].beforeToc = true;
                 return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 3:
                 content2 = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), "_ok.epub"), Buffer.from(content2))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + "_ok.epub", Buffer.from(content2))];
             case 4:
                 _a.sent();
                 order2 = warnings.find(function (w) { return typeof w[0] === 'string' && w[0].match(/out of order/); });

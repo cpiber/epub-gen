@@ -12,11 +12,7 @@ var __assign = (this && this.__assign) || function () {
 };
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
 }) : (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     o[k2] = m[k];
@@ -32,14 +28,14 @@ exports.validateAndNormalizeChapter = exports.validateAndNormalizeChapters = exp
 var diacritics_1 = require("diacritics");
 var mime_1 = require("mime");
 var ow_1 = __importDefault(require("ow"));
-var chapter_xhtml_ejs_1 = __importDefault(require("templates/epub2/chapter.xhtml.ejs"));
-var content_opf_ejs_1 = __importDefault(require("templates/epub2/content.opf.ejs"));
-var toc_xhtml_ejs_1 = __importDefault(require("templates/epub2/toc.xhtml.ejs"));
-var chapter_xhtml_ejs_2 = __importDefault(require("templates/epub3/chapter.xhtml.ejs"));
-var content_opf_ejs_2 = __importDefault(require("templates/epub3/content.opf.ejs"));
-var toc_xhtml_ejs_2 = __importDefault(require("templates/epub3/toc.xhtml.ejs"));
-var template_css_1 = __importDefault(require("templates/template.css"));
-var toc_ncx_ejs_1 = __importDefault(require("templates/toc.ncx.ejs"));
+var chapter_xhtml_ejs_1 = __importDefault(require("../templates/epub2/chapter.xhtml.ejs"));
+var content_opf_ejs_1 = __importDefault(require("../templates/epub2/content.opf.ejs"));
+var toc_xhtml_ejs_1 = __importDefault(require("../templates/epub2/toc.xhtml.ejs"));
+var chapter_xhtml_ejs_2 = __importDefault(require("../templates/epub3/chapter.xhtml.ejs"));
+var content_opf_ejs_2 = __importDefault(require("../templates/epub3/content.opf.ejs"));
+var toc_xhtml_ejs_2 = __importDefault(require("../templates/epub3/toc.xhtml.ejs"));
+var template_css_1 = __importDefault(require("../templates/template.css"));
+var toc_ncx_ejs_1 = __importDefault(require("../templates/toc.ncx.ejs"));
 var uslug_1 = __importDefault(require("uslug"));
 var html_1 = require("./html");
 var validate_1 = require("./validate");
@@ -75,8 +71,8 @@ var optionsDefaults = function (version) {
 };
 exports.optionsDefaults = optionsDefaults;
 var chapterDefaults = function (index) { return ({
-    title: "Chapter ".concat(index + 1),
-    id: "item_".concat(index),
+    title: "Chapter " + (index + 1),
+    id: "item_" + index,
     url: '',
     excludeFromToc: false,
     beforeToc: false,
@@ -103,7 +99,7 @@ function validateAndNormalizeChapters(chapters) {
         var ch = (0, exports.validateAndNormalizeChapter)(chapter, index);
         ch.content = html_1.normalizeHTML.call(_this, index, chapter.content);
         if (afterTOC && ch.beforeToc)
-            _this.warn("Warning (content[".concat(index, "]): Got `beforeToc=true` after at least one `beforeToc=false`. Chapters will be out of order."));
+            _this.warn("Warning (content[" + index + "]): Got `beforeToc=true` after at least one `beforeToc=false`. Chapters will be out of order.");
         if (!ch.beforeToc)
             afterTOC = true;
         return ch;
@@ -114,10 +110,10 @@ var validateAndNormalizeChapter = function (chapter, index) {
     var ch = __assign(__assign({}, (0, exports.chapterDefaults)(index)), chapter);
     var slug = (0, uslug_1.default)((0, diacritics_1.remove)(ch.title));
     if (!ch.filename) {
-        ch.filename = "".concat(index, "_").concat(slug, ".xhtml");
+        ch.filename = index + "_" + slug + ".xhtml";
     }
     else if (!ch.filename.endsWith('.xhtml')) {
-        ch.filename = "".concat(ch.filename, ".xhtml");
+        ch.filename = ch.filename + ".xhtml";
     }
     ch.author = (0, exports.normName)(ch.author);
     return ch;

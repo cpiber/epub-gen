@@ -53,7 +53,7 @@ var fetchable = function (url, timeout) { return __awaiter(void 0, void 0, void 
             case 2:
                 res = _a.sent();
                 if (!res.ok)
-                    throw new Error("Got error ".concat(res.status, " (").concat(res.statusText, ") while fetching ").concat(url));
+                    throw new Error("Got error " + res.status + " (" + res.statusText + ") while fetching " + url);
                 return [2 /*return*/, res.blob()];
             case 3:
                 clearTimeout(out);

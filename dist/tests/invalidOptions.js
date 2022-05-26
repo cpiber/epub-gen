@@ -53,7 +53,7 @@ var lib_1 = __importDefault(require("../lib"));
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
-                console.log("Caught `".concat(err_1, "` as expected"));
+                console.log("Caught `" + err_1 + "` as expected");
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];
         }

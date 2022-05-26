@@ -54,12 +54,12 @@ var lib_1 = __importDefault(require("../lib"));
                 return [3 /*break*/, 3];
             case 2:
                 err_1 = _a.sent();
-                console.log("Caught `".concat(err_1, "` as expected"));
+                console.log("Caught `" + err_1 + "` as expected");
                 return [3 /*break*/, 3];
             case 3: return [4 /*yield*/, (0, lib_1.default)({ title: 'EPub Gen', verbose: true, ignoreFailedDownloads: true }, [{ content: "<p>Generate EPUB books from HTML with a simple API in Node.js or the browser.</p><p><img src=\"file:///invalid/file/path\">" }])];
             case 4:
                 content = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 5:
                 _a.sent();
                 return [2 /*return*/];

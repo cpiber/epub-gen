@@ -49,14 +49,14 @@ var aliceData_1 = require("./aliceData");
             case 0: return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 1:
                 content = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 2:
                 _a.sent();
                 aliceData_1.optionsAlice.numberChaptersInTOC = false;
                 return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 3:
                 content2 = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), "_nonum.epub"), Buffer.from(content2))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + "_nonum.epub", Buffer.from(content2))];
             case 4:
                 _a.sent();
                 return [2 /*return*/];

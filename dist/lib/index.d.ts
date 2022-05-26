@@ -17,7 +17,7 @@ export declare class EPub {
     constructor(options: Options, content: Content);
     render(): Promise<this>;
     genEpub(): Promise<Buffer>;
-    generateAsync(options: JSZipGeneratorOptions): Promise<string | Buffer | Uint8Array | ArrayBuffer | number[] | Blob>;
+    generateAsync(options: JSZipGeneratorOptions): Promise<string | Buffer | Uint8Array | number[] | ArrayBuffer | Blob>;
     protected generateTemplateFiles(): Promise<void>;
     protected downloadAllFonts(): Promise<void>;
     protected downloadAllImages(): Promise<void>;

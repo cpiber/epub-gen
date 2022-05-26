@@ -51,7 +51,7 @@ var aliceData_1 = require("./aliceData");
                 return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 1:
                 content = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), ".epub"), Buffer.from(content))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + ".epub", Buffer.from(content))];
             case 2:
                 _a.sent();
                 aliceData_1.optionsAlice.tocInTOC = false;
@@ -60,7 +60,7 @@ var aliceData_1 = require("./aliceData");
                 return [4 /*yield*/, (0, lib_1.default)(aliceData_1.optionsAlice, aliceData_1.contentAlice)];
             case 3:
                 content2 = _a.sent();
-                return [4 /*yield*/, (0, promises_1.writeFile)("".concat(__filename.slice(0, -3), "_notoc.epub"), Buffer.from(content2))];
+                return [4 /*yield*/, (0, promises_1.writeFile)(__filename.slice(0, -3) + "_notoc.epub", Buffer.from(content2))];
             case 4:
                 _a.sent();
                 return [2 /*return*/];

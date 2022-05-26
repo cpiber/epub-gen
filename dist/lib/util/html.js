@@ -16,7 +16,7 @@ function imgSrc(url) {
         };
         this.images.push(image);
     }
-    return "images/".concat(image.id, ".").concat(image.extension);
+    return "images/" + image.id + "." + image.extension;
 }
 function normalizeHTML(index, data) {
     return html_parse_1.fixHTML.call(this, index, data, imgSrc).replace(/^<body(?: xmlns="http:\/\/www\.w3\.org\/1999\/xhtml")?>|<\/body>$/g, '');
