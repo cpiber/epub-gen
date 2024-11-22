@@ -18,13 +18,13 @@ On the server (with Node.js), image paths can also start with `file://`, in whic
 Install the lib and add it as a dependency (recommended), run in your project directory:
 
 ```shell
-npm install epub-gen-memory --save
+npm install @mnhlt/epub-gen-memory --save
 ```
 
 Then put this in your code:
 
 ```js
-import epub from 'epub-gen-memory';
+import epub from '@mnhlt/epub-gen-memory';
 
 epub(options).then(
     content => console.log("Ebook Generated Successfully!"),
@@ -34,30 +34,50 @@ epub(options).then(
 
 See [JSZip documentation](https://github.com/Stuk/jszip/blob/master/documentation/howto/write_zip.md) on how to get the zip to the user. For a nodejs example please see the tests.
 
-In environments where `SharedArrayBuffer` is not available, you might want to instead import from `epub-gen-memory/sabstub`, which includes a non-functional stub:
+In environments where `SharedArrayBuffer` is not available, you might want to instead import from `@mnhlt/epub-gen-memory/sabstub`, which includes a non-functional stub:
 
 ```js
-import epub from 'epub-gen-memory/sabstub';
+import epub from '@mnhlt/epub-gen-memory/sabstub';
 ```
 
-The package also includes a [browserify](https://www.npmjs.com/package/browserify)d bundle (UMD) as `epub-gen-memory/bundle`. It is possible to use the bundle if you want to build for the browser. The bundle is also available from a CDN: [UNPKG](https://unpkg.com/epub-gen-memory) ([latest](https://unpkg.com/epub-gen-memory), [latest 1.x](https://unpkg.com/epub-gen-memory@^1.0.0)). The bundle also includes the proper return type for the browser (`Promise<Blob>` instead of `Promise<Buffer>`).
+The package also includes a [browserify](https://www.npmjs.com/package/browserify)d bundle (UMD) as @mnhlt/epub-gen-memory/bundle`. It is possible to use the bundle if you want to build for the browser. The bundle is also available from a CDN: [UNPKG](https://unpkg.com/epub-gen-memory) ([latest](https://unpkg.com/epub-gen-memory), [latest 1.x](https://unpkg.com/epub-gen-memory@^1.0.0)). The bundle also includes the proper return type for the browser (`Promise<Blob>` instead of `Promise<Buffer>`).
 
 ```js
-import epub from 'epub-gen-memory/bundle';
+import epub from '@mnhlt/epub-gen-memory/bundle';
 ```
 
 **Note**: This library was written in TypeScript and thus uses ESM exports, but it was compiled to CommonJS, so you can also use the following:
 
 ```js
-const epub = require('epub-gen-memory').default;
+const epub = require('@mnhlt/epub-gen-memory').default;
+```
+
+### Write epub with file streaming mode.
+**Note**: This mode is only available in Node.js.
+
+In case you want to write the large epub to a file, you can use the streaming mode to avoid memory issues.
+
+```js
+import epub from '@mnhlt/epub-gen-memory';
+
+epub(options, content, { stream: true }).then(
+    content => console.log("Ebook Generated Successfully!"),
+    err => console.error("Failed to generate Ebook because of ", err)
+);
+
+or 
+import {EpubStream} from '@mnhlt/epub-gen-memory';
+
+const epubStream = new EpubStream(options, content);
+await epubStream.genEpub();
 ```
 
 
 ## API
 
 ```ts
-import epub, { EPub, optionsDefaults, chapterDefaults } from 'epub-gen-memory';
-import type { Options, Content, Chapter, Font } from 'epub-gen-memory';
+import epub, { EPub, optionsDefaults, chapterDefaults } from '@mnhlt/epub-gen-memory';
+import type { Options, Content, Chapter, Font } from '@mnhlt/epub-gen-memory';
 ```
 
 
@@ -137,6 +157,10 @@ protected:
     Instead of throwing, emit a warning and write an empty file if a font or image fails to download
 - `verbose`: `boolean | ((type, ...args) => void)` (optional, default `false`)  
     Whether to log progress messages; If a function is provided, the first argument will either be `'log'` or `'warn'`
+- `tempDir`: `string` (optional, default `uuid()`)  
+    Directory to store temporary files in
+- `output`: `string` (optional)  
+    file path to write the epub to
 
 
 ### Chapters

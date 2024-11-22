@@ -13,6 +13,7 @@ import type { EPub } from '..';
 import { normalizeHTML } from './html';
 import { isString, validateIsChapters, validateIsOptions, validateIsOptionsOrTitle, validateIsVarargArray } from './predicates';
 import { Chapter, Content, Font, NormChapter, NormOptions, Options } from './validate';
+import { AEpub } from 'lib/AEpub';
 
 export * from './html';
 export * from './other';
@@ -69,7 +70,7 @@ export const validateAndNormalizeOptions = (options: Options) => {
   return opt;
 };
 
-export function validateAndNormalizeChapters(this: EPub, chapters: readonly Chapter[]) {
+export function validateAndNormalizeChapters(this: AEpub, chapters: readonly Chapter[]) {
   validateIsChapters(chapters);
 
   let afterTOC = false;

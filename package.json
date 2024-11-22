@@ -1,6 +1,6 @@
 {
-  "name": "epub-gen-memory",
-  "version": "1.1.2",
+  "name": "@mnhlt/epub-gen-memory",
+  "version": "1.1.5",
   "description": "A library to generate EPUB from HTML",
   "main": "dist/lib/index.js",
   "unpkg": "dist/bundle.min.js",
@@ -8,7 +8,8 @@
   "browser": {
     "./dist/lib/util/fetchable.js": "./dist/lib/util/fetchable-browser.js",
     "./dist/lib/util/html-parse.js": "./dist/lib/util/html-parse-browser.js",
-    "./dist/lib/util/predicates.js": "./dist/lib/util/predicates-nop.js"
+    "./dist/lib/util/predicates.js": "./dist/lib/util/predicates-nop.js",
+    "./dist/lib/EpubStream.js": "./dist/lib/EpubStream-browser.js"
   },
   "files": [
     "dist/",
@@ -43,6 +44,7 @@
   "homepage": "https://github.com/cpiber/epub-gen-memory",
   "dependencies": {
     "abort-controller": "^3.0.0",
+    "archiver": "^7.0.1",
     "css-select": "^4.1.3",
     "diacritics": "^1.3.0",
     "dom-serializer": "^1.3.2",
@@ -57,6 +59,7 @@
     "slugify": "^1.6.5"
   },
   "devDependencies": {
+    "@types/archiver": "^6.0.3",
     "@types/diacritics": "^1.3.1",
     "@types/ejs": "^3.1.0",
     "@types/mime": "^2.0.3",
@@ -75,5 +78,8 @@
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+    "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }

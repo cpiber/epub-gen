@@ -42,6 +42,8 @@ export type Options = {
   batchSize?: number,
   ignoreFailedDownloads?: boolean,
   verbose?: boolean | LogFn,
+  tempDir?: string,
+  output?: string,
 };
 
 

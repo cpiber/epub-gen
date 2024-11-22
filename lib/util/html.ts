@@ -2,6 +2,7 @@ import mime from 'mime/lite';
 import type { EPub } from '..';
 import { fixHTML } from './html-parse';
 import { uuid } from './other';
+import { AEpub } from 'lib/AEpub';
 
 export type CB = typeof imgSrc;
 
@@ -12,7 +13,7 @@ export type Image = {
   mediaType: string | null,
 };
 
-function imgSrc(this: EPub, url: string) {
+function imgSrc(this: AEpub, url: string) {
   let image = this.images.find(i => i.url === url);
   if (!image) {
     const mediaType = mime.getType(url.replace(/\?.*/, "")) || '';
@@ -27,6 +28,6 @@ function imgSrc(this: EPub, url: string) {
   return `images/${image.id}.${image.extension}`;
 }
 
-export function normalizeHTML(this: EPub, index: number, data: string) {
+export function normalizeHTML(this: AEpub, index: number, data: string) {
   return fixHTML.call(this, index, data, imgSrc).replace(/^<body(?: xmlns="http:\/\/www\.w3\.org\/1999\/xhtml")?>|<\/body>$/g, '');
 }

@@ -3,14 +3,14 @@ import render from 'dom-serializer';
 import { Element, Node } from 'domhandler';
 import { removeElement } from 'domutils';
 import { parseDocument } from 'htmlparser2';
-import type { EPub } from '..';
 import { allowedAttributes, allowedXhtml11Tags } from './constants';
 import type { CB } from './html';
+import { AEpub } from 'lib/AEpub';
 
 const allNodes = compile('*');
 const allImages = compile('img');
 
-export function fixHTML(this: EPub, index: number, html: string, imgCB: CB) {
+export function fixHTML(this: AEpub, index: number, html: string, imgCB: CB) {
   const doc = parseDocument(html);
   const body = selectOne('body', doc.children);
   const document = body ?? doc;
